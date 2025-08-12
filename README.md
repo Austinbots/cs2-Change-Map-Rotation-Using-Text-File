@@ -1,5 +1,5 @@
 # cs2-Change-Maps-with-mapcycle.txt
-This plugin will cycle the server maps from the list of maps in .\csgo\mapcycle.txt<br>
+This plugin will cycle the cs2 server maps from the list of maps in .\csgo\mapcycle.txt<br>
 <br>
 It supports standard map names workshop map ids and comment lines.<br>
 For example:<br>
