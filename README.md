@@ -1,4 +1,7 @@
 # cs2-Change-Maps-with-mapcycle.txt
+This is a Counter Strike Sharp plugin for Counter Strike 2 dedicated servers.
+https://github.com/roflmuffin/CounterStrikeSharp
+
 This plugin will cycle the cs2 server maps from the list of maps in .\csgo\mapcycle.txt<br>
 <br>
 It supports standard map names workshop map ids and comment lines.<br>
@@ -17,10 +20,6 @@ mp_endmatch_votenextleveltime 0<br>
 If you have end match voting enabled it will be ignored and after the vote it will still switch to the next map in the mapcycle.txt file.<br>
 
 # Installing
-
-This is a Counter Strike Sharp plugin for Counter Strike 2 dedicated servers.
-https://github.com/roflmuffin/CounterStrikeSharp
-
 The dll will run on both Linux and Windows.
 Once you have Counter Strike Sharp installed 
 install the dll on your linux or Windows cs2 dedicated server here:
