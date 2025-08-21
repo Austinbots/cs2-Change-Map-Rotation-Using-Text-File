@@ -43,8 +43,7 @@ You can disable the plugin without uninstalling it by setting this to false.<br>
 <b>"PluginEnabled"</b>: true,<br>
 <br>
 This setting specifies the name of the map cycle file used. You can specify any file name you want but the file has to be placed in the .csgo folder<br>
-<br>
-Note: cs# does things with the mapcycle.txt file so we recommend you do not use this name. If you do you will see warning messages from cs# about invalid map names for your lines that are comments or workshop map ids.<br>
+Note: cs# does things with the mapcycle.txt file so we recommend you do not use this default name mapcycle.txt. If you do you will see warning messages from cs# about invalid map names for your lines that are comments or workshop map ids.<br>
 <b>"MapCycleFile"</b>: "mapcyclecustom.txt",<br>
 <br>
 When this is set to true instead of changing the maps in the order in the map cycle file it randomizes the next map.<br>
@@ -54,6 +53,7 @@ When this is set to true it keeps maps that have already been played from being 
 <b>"EnableNoDuplicateRandomMaps"</b>: true,<br>
 <br>
 Note: This does not prevent you from putting the same map in your map cycle file more than once. It only works with EnableRandomMaps = true;<br>
+<br>
 This gives you the most flexibility.<br>
 <br>
 You can have random maps and duplicates picked in the random selection.<br>
@@ -72,10 +72,9 @@ de_nuke<br>
 3270832263<br>
 cs_office<br>
 <br>
-Note: for a cs# pluings to pick up changes to their config files they have to be reloaded.<br>
-THey will not get the changes with just a map change.<br>
+Note: for a cs# pluings to pick up changes to their config files they have to be reloaded. They will not get the changes with just a map change.<br>
 In your server console type:<br>
-css_plugins reload ABS_MapCycle<br>
+<b>css_plugins reload ABS_MapCycle</b><br>
 <br>
 The cs# config files are json format files and must have exact syntax or they will be broken and not work. Be sure to keep the formatting with quotes and commas in them.<br>
 <br>
@@ -88,8 +87,9 @@ After this cs2 switches to the map vote screen. Even if you have mp_endmatch_vot
 How long this vote screen displays for is set by this cvar.<br>
 mp_match_restart_delay<br>
 <br>
-Also note this setting does not extend any time. It only sets how long you can click on a map tile to vote for it -during- the mp_match_restart_delay time.<br>
+Also note this setting<br>
 mp_endmatch_votenextleveltime<br>
+does not extend any time. It only sets how long you can click on a map tile to vote for it -during- the mp_match_restart_delay time.<br>
 <br>
 ABS_MapCycle does not switch to the next map until this total time has expired.<br>
 mp_win_panel_display_time + mp_match_restart_delay<br>
@@ -97,7 +97,8 @@ mp_win_panel_display_time + mp_match_restart_delay<br>
 When using ABS_MapCycle to switch your maps it makes the most sense to have these settings.<br>
 <br>
 Set this time for how long you want to see the end of match screen showing players and starts<br>
-mp_win_panel_display_time<br>
+mp_win_panel_display_time 10<br>
+<br>
 And then set this time to 0 so you do not see anything with the map voting and have the map switch right after mp_win_panel_display_time time expires.<br>
 mp_match_restart_delay 0<br>
 <br>
