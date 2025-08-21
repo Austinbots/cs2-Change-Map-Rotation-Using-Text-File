@@ -40,18 +40,18 @@ The ABS_MapCycle config file<br>
 can be edited with a text editor and has these settings.<br>
 <br>
 You can disable the plugin without uninstalling it by setting this to false.<br>
-<b>"PluginEnabled"<bb>: true,<br>
+<b>"PluginEnabled"</b>: true,<br>
 <br>
 This setting specifies the name of the map cycle file used. You can specify any file name you want but the file has to be placed in the .csgo folder<br>
 <br>
 Note: cs# does things with the mapcycle.txt file so we recommend you do not use this name. If you do you will see warning messages from cs# about invalid map names for your lines that are comments or workshop map ids.<br>
-"MapCycleFile": "mapcyclecustom.txt",<br>
+<b>"MapCycleFile"</b>: "mapcyclecustom.txt",<br>
 <br>
 When this is set to true instead of changing the maps in the order in the map cycle file it randomizes the next map.<br>
-"EnableRandomMaps": false,<br>
+<b>"EnableRandomMaps"</b>: false,<br>
 <br>
 When this is set to true it keeps maps that have already been played from being choses again in the random pick. All of the files in your map cycle file will be played without duplicates and then the full list will be used over.<br>
-"EnableNoDuplicateRandomMaps": true,<br>
+<b>"EnableNoDuplicateRandomMaps"</b>: true,<br>
 <br>
 Note: This does not prevent you from putting the same map in your map cycle file more than once. It only works with EnableRandomMaps = true;<br>
 This gives you the most flexibility.<br>
