@@ -11,21 +11,19 @@ cs_italy<br>
 de_nuke<br>
 // de_subzero<br>
 3270832263<br>
-de_nuke
+de_nuke<br>
 cs_office<br>
 <br>
-When using this plugin turn off end match map voting with these cvars.<br>
-<br>
+When using this plugin turn off end match map voting with this cvar.<br>
 mp_endmatch_votenextmap 0<br>
-mp_endmatch_votenextleveltime 0<br>
 <br>
 If you have end match voting enabled it will be ignored and after the vote it will still switch to the next map in the map cycle file.<br>
 <br>
 # Installing
-The dll will run on both Linux and Windows.<br>
+The plugin will run on both Linux and Windows.<br>
 Once you have Counter Strike Sharp installed extract the files in the zip keeping the folder structure in the zip starting from your .\csgo folder.<br>
 <br>
-.\csgo\<br>
+.\csgo\ <br>
 .\csgo\mapcyclecustom.txt<br>
 <br>
 .\csgo\addons\CounterStrikeSharp\configs\plugins<br>
@@ -43,7 +41,7 @@ The ABS_MapCycle config file<br>
 can be edited with a text editor and has these settings.<br>
 <br>
 You can disable the plugin without uninstalling it by setting this to false.<br>
-"PluginEnabled": true,<br>
+<b>"PluginEnabled"<bb>: true,<br>
 <br>
 This setting specifies the name of the map cycle file used. You can specify any file name you want but the file has to be placed in the .csgo folder<br>
 <br>
