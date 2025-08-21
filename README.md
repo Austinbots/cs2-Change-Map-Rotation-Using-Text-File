@@ -1,4 +1,4 @@
-# cs2-Change-Maps-with-mapcycle.txt
+# cs2-Change-Map-Rotation-Using-Text-File
 This is a Counter Strike Sharp plugin for Counter Strike 2 dedicated servers.<br>
 https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers<br>
 https://github.com/roflmuffin/CounterStrikeSharp<br>
