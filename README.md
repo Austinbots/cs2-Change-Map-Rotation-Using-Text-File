@@ -17,8 +17,7 @@ cs_office<br>
 When using this plugin turn off end match map voting with this cvar.<br>
 mp_endmatch_votenextmap 0<br>
 <br>
-If you have end match voting enabled it will be ignored and after the vote it will still switch to the next map in the map cycle file.<br>
-<br>
+If you have end match voting enabled it will be ignored and after the vote it will still switch to the next map in the map cycle file.
 # Installing
 The plugin will run on both Linux and Windows.<br>
 Once you have Counter Strike Sharp installed extract the files in the zip keeping the folder structure in the zip starting from your .\csgo folder.<br>
