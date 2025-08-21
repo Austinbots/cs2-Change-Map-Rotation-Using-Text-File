@@ -36,7 +36,7 @@ Once you have Counter Strike Sharp installed extract the files in the zip keepin
 .\csgo\addons\CounterStrikeSharp\plugins\ABS_MapCycle\ABS_MapCycle.pdb
 # Settings
 The ABS_MapCycle config file<br>
-.\csgo\addons\CounterStrikeSharp\configs\plugins\ABS_MapCycle\<b>ABS_MapCycle.json</b><br>
+.\csgo\addons\CounterStrikeSharp\configs\plugins\ABS_MapCycle\ <b>ABS_MapCycle.json</b><br>
 can be edited with a text editor and has these settings.<br>
 <br>
 You can disable the plugin without uninstalling it by setting this to false.<br>
