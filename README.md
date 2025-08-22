@@ -103,7 +103,7 @@ does not extend any time. It only sets how long you can click on a map tile to v
 When using ABS_MapCycle to switch your maps it makes the most sense to have these settings.<br>
 <br>
 Set this time for how long you want to see the round end screen. This delay happen after every round not just the last round in a match.<br>
-mp_win_panel_display_time 10<br>
+mp_win_panel_display_time 5<br>
 <br>
 And then set this time to 0 so you do not see anything with the map voting and have the maps switch right after mp_win_panel_display_time time expires.<br>
 mp_match_restart_delay 0<br>
@@ -114,4 +114,5 @@ because in the event some settings of these delays cause us to not do the map sw
 mp_match_restart_delay 0<br>
 you will not see the vote screen even with mp_endmatch_votenextmap 1<br> 
 <br>
-
+If you enable the show next map message to have the message on the screen long enough to see it you will have to set this to something like 15-20 seconds.
+mp_match_restart_delay 
