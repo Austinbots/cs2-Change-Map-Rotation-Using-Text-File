@@ -1,8 +1,11 @@
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Cvars;
+using CounterStrikeSharp.API.Modules.Extensions;
+using CounterStrikeSharp.API.Modules.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Serialization;
@@ -11,19 +14,21 @@ namespace ABS_MapCycle;
 
 public class ABS_MapCycleConfig : BasePluginConfig
 {
+	[JsonPropertyName("ConfigVersion")] public override int Version {get;set;} = 1;
 	[JsonPropertyName("PluginEnabled")] public bool PluginEnabled { get; set; } = true;
 	[JsonPropertyName("EnableRandomMaps")] public bool EnableRandomMaps { get; set; } = false;
 	[JsonPropertyName("EnableNoDuplicateRandomMaps")] public bool EnableNoDuplicateRandomMaps { get; set; } = true;
-	[JsonPropertyName("MapCycleFile")] public string MapCycleFile { get; set; } = "mapcyclecustom.txt";
+	[JsonPropertyName("EnableNextMapMessage")] public bool EnableNextMapMessage { get; set; } = true;
+	[JsonPropertyName("MapCycleFile")] public string MapCycleFile { get; set; } = "mapcyclecustom.txt";	
 }
 
 public class ABS_MapCycle : BasePlugin, IPluginConfig<ABS_MapCycleConfig>
 {
 	public override string ModuleName => "ABS_MapCycle";
-	public override string ModuleVersion => "1.3";
+	public override string ModuleVersion => "1.4";
 	public override string ModuleAuthor => "austin";
-	public override string ModuleDescription => "Cycles server maps listed in a text file.";
-	public required ABS_MapCycleConfig Config {get; set;}
+	public override string ModuleDescription => "Cycles server maps listed in a text file";
+	public required ABS_MapCycleConfig Config {get; set;} = new();
 
 	public string MapCycleFile;
 	public List<string> MapCycleList;
@@ -32,6 +37,7 @@ public class ABS_MapCycle : BasePlugin, IPluginConfig<ABS_MapCycleConfig>
 
 	public override void	Load(bool hotReload)
 	{
+		Console.WriteLine("------------------------------------------------------------------");
 		Console.WriteLine($"Plugin: {this.ModuleName} - {ModuleDescription}  - Version: {this.ModuleVersion} by {this.ModuleAuthor}");
 
 		if(!Config.PluginEnabled)
@@ -58,10 +64,13 @@ public class ABS_MapCycle : BasePlugin, IPluginConfig<ABS_MapCycleConfig>
 			ConvertAll(d => d.ToLower());
 
 		// show the map list including any comment lines
-		Console.WriteLine($"----------- Loaded {MapCycleFile} -----------");
+		Console.WriteLine("---------------------------------");
 		Console.WriteLine($"EnableRandomMaps = {Config.EnableRandomMaps}");
 		Console.WriteLine($"EnableNoDuplicateRandomMaps = {Config.EnableNoDuplicateRandomMaps}");
+		Console.WriteLine($"EnableNextMapMessage = {Config.EnableNextMapMessage}");
 		Console.WriteLine($"MapCycleFile = {Config.MapCycleFile}");
+		Console.WriteLine($"Loaded {MapCycleFile}");
+		Console.WriteLine("---------------------------------");
 		foreach (string Map in MapCycleList)
 			Console.WriteLine($"{Map}");
 		Console.WriteLine("------------------------------------------------------------------");
@@ -98,9 +107,26 @@ public class ABS_MapCycle : BasePlugin, IPluginConfig<ABS_MapCycleConfig>
 
 	public void OnConfigParsed(ABS_MapCycleConfig config)
 	{
-		Config = config;
+		try
+		{
+			if (config.Version < Config.Version)
+			{
+				int NewVersion = Config.Version;
+				Config = config;
+				Config.Version = NewVersion;
+				Config.Update();
+			}
+			else
+				Config = config;
+		}
+		catch(Exception e)
+		{
+			var st = new StackTrace(e, true);
+			var frame = st.GetFrame(0);
+			var line = frame.GetFileLineNumber();
+			Console.WriteLine($"!EXCEPTION - ABS_MapCycle - OnConfigParsed() \nLine {line}\n{e.Message}",true);
+		}
 	}
-
 	public HookResult EventCsWinPanelMatchHandler(EventCsWinPanelMatch @event, GameEventInfo info)
 	{
 		string NextMap;
@@ -147,7 +173,7 @@ public class ABS_MapCycle : BasePlugin, IPluginConfig<ABS_MapCycleConfig>
 			MatchRestartDelay = mp_match_restart_delay.GetPrimitiveValue<int>();
 
 		Delay = Math.Max(WinPanelDelay, MatchRestartDelay);
-		// switch map 5 seconds before game tries to switch map or immediately if game is set for no delay
+		// switch map 5 seconds before game tries to switch map or immediately if game is for no delay
 		Delay = Math.Max(0, Delay-5);
 	
 		if(Config.EnableRandomMaps)
@@ -180,6 +206,8 @@ public class ABS_MapCycle : BasePlugin, IPluginConfig<ABS_MapCycleConfig>
 		// changing to a blank map will mess up the server
 		if (NextMap != "")
 		{
+			if (Config.EnableNextMapMessage)
+				Server.PrintToChatAll($"Next Map {ChatColors.Green}{NextMap}");
 			AddTimer(Delay, () =>
 			{
 				Console.WriteLine($"ABS_MapCycle Changing map to = {NextMap}");
@@ -195,4 +223,3 @@ public class ABS_MapCycle : BasePlugin, IPluginConfig<ABS_MapCycleConfig>
 		return HookResult.Continue;
 	}
 }
-
