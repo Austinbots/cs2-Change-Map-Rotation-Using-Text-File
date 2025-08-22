@@ -147,7 +147,7 @@ public class ABS_MapCycle : BasePlugin, IPluginConfig<ABS_MapCycleConfig>
 			MatchRestartDelay = mp_match_restart_delay.GetPrimitiveValue<int>();
 
 		Delay = Math.Max(WinPanelDelay, MatchRestartDelay);
-		// switch map 5 seconds before game tries to switch map or immediately if game is for no delay
+		// switch map 5 seconds before game tries to switch map or immediately if game is set for no delay
 		Delay = Math.Max(0, Delay-5);
 	
 		if(Config.EnableRandomMaps)
@@ -182,7 +182,7 @@ public class ABS_MapCycle : BasePlugin, IPluginConfig<ABS_MapCycleConfig>
 		{
 			AddTimer(Delay, () =>
 			{
-				Console.WriteLine($"ABS_MapCycle Changing map to = {NextMap} ==================================================================");
+				Console.WriteLine($"ABS_MapCycle Changing map to = {NextMap}");
 				// if ulong parm assume workshop id
 				if (ulong.TryParse(NextMap, out _))
 					Server.ExecuteCommand($"host_workshop_map {NextMap}");
@@ -195,3 +195,4 @@ public class ABS_MapCycle : BasePlugin, IPluginConfig<ABS_MapCycleConfig>
 		return HookResult.Continue;
 	}
 }
+
