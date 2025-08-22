@@ -94,7 +94,7 @@ mp_match_restart_delay<br>
 <br>
 We have to switch the map before this time expires because<br>
 if this is set mp_endmatch_votenextmap 0<br>
-after the time expires the game will try to switch to a blank map and the server will either crash or go into a strange nonfunctioning state. This is a strange thing with the game and not caused by this plugin.
+after the time expires the game will try to switch to a blank map and the server will either crash or go into a strange nonfunctioning state. This is a strange thing with the game and not caused by this plugin.<br>
 <br>
 Also note this setting<br>
 mp_endmatch_votenextleveltime<br>
@@ -102,7 +102,7 @@ does not extend any time. It only sets how long you can click on a map tile to v
 <br>
 When using ABS_MapCycle to switch your maps it makes the most sense to have these settings.<br>
 <br>
-Set this time for how long you want to see the end of match screen. This delay happen after every round not just the last round in a match.<br>
+Set this time for how long you want to see the round end screen. This delay happen after every round not just the last round in a match.<br>
 mp_win_panel_display_time 10<br>
 <br>
 And then set this time to 0 so you do not see anything with the map voting and have the maps switch right after mp_win_panel_display_time time expires.<br>
