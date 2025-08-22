@@ -72,7 +72,7 @@ In your server console type:<br>
 The cs# config files are json format files and must have exact syntax or they will be broken and not work. Be sure to keep the formatting with quotes and commas in them.<br>
 <br>
 # Delay before Map Changes<br>
-After the last round of the match ends cs2 shows a "Round Won" alert on screen. The amount of time this displays is determined by this setting.<br>
+After the last round of the match ends cs2 shows a "Round Won/Loss" alert on screen. The amount of time this displays is determined by this setting.<br>
 mp_win_panel_display_time 10<br>
 <br>
 After this time expires cs2 switches to the map vote screen. Even if you have mp_endmatch_votenextmap 0 it will still switch to the vote screen and (if your mapgroup is correctly configured) it will show the map tiles and look like it is allowing the vote but with mp_endmatch_votenextmap 0 any map choices will be ignored and even with endmatch_votenextmap 1 and ABS_MapCycle enabled any map vote will still be ignored and ABS_MapCycle will still pick the next map to switch to.<br>
