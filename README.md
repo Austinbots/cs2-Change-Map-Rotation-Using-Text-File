@@ -111,8 +111,7 @@ mp_match_restart_delay 0<br>
 When using this plugin map voting is ignored and the map is set to the next map in the rotation but we still recommend you set this to 1<br> 
 mp_endmatch_votenextmap 1<br>
 because in the event some settings of these delays cause us to not do the map switch before the game does the switch at least your server will switch to a map in your mapgoup instead of crashing or going into a strange non responsive state. (This is the game and not caused by this plugin). If you set this to 0<br>
-mp_match_restart_delay 0<br>
-you will not see the vote screen even with mp_endmatch_votenextmap 1<br> 
+mp_match_restart_delay 0 you will not see the vote screen even with mp_endmatch_votenextmap 1<br> 
 <br>
 If you enable the show next map message to have the message on the screen long enough to see it you will have to set this to something like 15-20 seconds.
 mp_match_restart_delay 
